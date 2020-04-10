@@ -1,0 +1,47 @@
+{% extends "base.html" %} {% load static %} {% load appfilters %} {% block content %}
+
+<style>
+    hr{
+        border-top: 1px dashed #00000080;
+    }
+</style>
+
+<div class="container-fluid whole_content">
+
+    <div class="row" style="margin-top:8vw;">
+        <div class="col-sm-1"></div>
+        <p class="trapezoid_blue">
+            {{news.title}}
+        </p>
+        <p class="trapezoid_white"></p>
+        <p class="trapezoid_yellow"></p>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-8">
+            <img src="{{news.thumbnail.url }}" alt="" class="shadow" style="width: 100%;border: 1px solid">
+            <p style="margin-top: 10px;font-weight: bold">
+                <i class="fa fa-calendar" style="margin-right: 10px"></i>
+                {{ news.news_date.date }}</p>
+            <hr> {% for new in news.content|newssplit %}
+            <p>{{ new }}</p>
+            {% endfor %}
+        </div>
+
+        <div class="col-sm-3">
+            <p style="font-size: 25px;font-weight: bold;margin-bottom: 20px">Media</p>
+
+            <a href="{% url 'main:allnews' %}" style="font-size: 18px">News</a>
+            <hr>
+            <a href="{% url 'main:allvideos' %}" style="font-size: 18px">Videos</a>
+            <hr>
+            <a href="{% url 'main:allphotos' %}" style="font-size: 18px">Photos</a>
+            <hr>
+            <a href="" style="font-size: 18px">Press Release</a>
+            <hr>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

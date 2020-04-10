@@ -1,0 +1,49 @@
+{% extends "base.html" %} {% load static %} {% load appfilters %} {% block content %}
+
+<style>
+    .card{
+        transition: box-shadow 0.3s;
+    }
+
+    .card:hover{
+        box-shadow: 0px 0px 10px #00000080;
+    }
+</style>
+
+<div class="container-fluid whole_content">
+
+    <div class="row" style="margin-top: 8vw;">
+        <div class="col-sm-1"></div>
+        <p class="trapezoid_blue">
+            News
+        </p>
+        <p class="trapezoid_white"></p>
+        <p class="trapezoid_yellow"></p>
+    </div>
+
+
+    <div class="container">
+        <div class="row">
+            {% for new in news %}
+            <div class="col-sm-4" style="margin-bottom: 50px">
+
+                <div class="card" style="padding: 10px">
+                    <img src="{{ new.thumbnail.url }}" class="card-img-top" alt="...">
+                    <div class="card-body" style="padding: 0px;margin-top: 10px">
+                        <a href="{% url 'main:newsopen' new.id %}">
+                            <p class="card-title text-left newstitle">{{ new.title|trimheadline }}</p>
+                        </a>
+                        <p class="card-text text-left">{{ new.content|getheadline }}</p>
+                        <p class="card-text text-left">
+                            <small class="text-muted">{{ new.news_date.date }}</small>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

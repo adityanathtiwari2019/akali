@@ -1,0 +1,45 @@
+.hovereffect1 .overlay1{
+    width: 80%;
+  height: 80%;
+  position: absolute;
+  overflow: hidden;
+  top: 10%;
+  left: 10%;
+  border: 1px solid #ffc600;
+  transform: scale(0);
+  transition: transform 0.4s;
+}
+
+.hovereffect1 .card-img-top{
+    transition: filter 0.4s;
+}
+
+.hovereffect1:hover .overlay1{
+    transform: scale(1);
+}
+
+.hovereffect1:hover .card-img-top{
+    filter: grayscale(1) blur(3px);
+}
+
+.gallink:hover{
+    color: white;
+}
+
+.hovereffect1 p{
+    background-color: #00000080;
+    color: white;
+    margin-top: 20px;
+}
+
+.gallink{
+    display: inline-block;
+    border: 1px solid white;
+    color: white;
+    margin-top: 15px;
+    padding: 10px
+}
+
+.playbtn{
+    width: 50px;
+}

@@ -1,0 +1,115 @@
+{% load staticfiles %} {% load static %}
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- <meta name="description" content="{{ desc }}">
+    <meta name="keywords" content="{{ keys }}">
+    <meta name="robots" content="index,follow"> -->
+    {% if title %}
+    <title>{{ title }} - Shiromani Akali Dal Delhi</title>
+    {% else %}
+    <title>Shiromani Akali Dal Delhi</title>
+    {% endif %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/mystyle.css' %}">
+    <link rel="stylesheet" href="{% static 'css/swiper.css' %}">
+    <link rel="stylesheet" href="{% static 'css/overlay.css' %}">
+    <link rel="stylesheet" href="{% static 'css/multicarousel.css' %}">
+    <link rel="stylesheet" href="{% static 'css/overlaycard.css' %}">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+        integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.10/js/mdb.min.js"></script>
+    <!-- <script src="{% static 'js/myjs.js' %}"></script> -->
+    <script src="{% static 'js/swiper.min.js' %}"></script>
+    <script src="{% static 'js/multicarousel.js' %}"></script>
+
+
+    <style>
+        body {
+            background: #fff;
+            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            color: #000;
+            margin: 0;
+            padding: 0;
+        }
+
+        .swiper-container {
+            width: 100%;
+            padding-top: 20px;
+            padding-bottom: 50px;
+        }
+
+        .swiper-slide {
+            background-position: center;
+            background-size: cover;
+            width: 70%;
+            height: 35vw;
+        }
+
+        .formerror {
+            margin: 0%;
+            font-size: 12px;
+            color: rgb(214, 0, 0);
+        }
+    </style>
+
+</head>
+
+<body>
+
+    {% include "navbar.html" %} {% block content %} {% endblock %} {% include "footer.html" %}
+
+    <script src="{% static 'js/donationvalidator.js' %}"></script>
+    <script src="{% static 'js/membervalidator.js' %}"></script>
+    <script src="{% static 'js/internvalidator.js' %}"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            speed: 2000,
+            simulateTouch: true,
+            effect: 'coverflow',
+            loop: true,
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: 'auto',
+            autoplay: {
+                delay: 5000,
+            },
+            coverflowEffect: {
+                rotate: 0,
+                stretch: 0,
+                depth: 300,
+                modifier: 1,
+                slideShadows: true,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            // Navigation arrows
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+    </script>
+
+</body>
+
+</html>

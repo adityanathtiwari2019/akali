@@ -1,0 +1,45 @@
+.hovereffect .myoverlay{
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    left: 10%;
+    top: 10%;
+    padding: 20px;
+    border-top: 1px solid #ffc600;
+    border-bottom: 1px solid #ffc600;
+    transform: scaleX(0);
+    transition: transform 0.35s;
+    transition-delay: 1s;
+}
+
+.caption_col{
+    background-color: rgba(0, 0, 0, 0.466);
+    color: white;
+    font-size: 20px;
+    opacity: 0;
+    margin-left: 50%;
+    transition: opacity 0.35s, margin-left 0.35s;
+    transition-delay: 1.35s;
+}
+
+.caption_col::first-letter{
+    font-size: 40px;
+}
+
+/* .hovereffect:hover .myoverlay{
+    transform: scaleX(1);
+} */
+
+.swiper-slide-active .myoverlay{
+    transform: scaleX(1);
+}
+
+/* .hovereffect:hover .myoverlay .row .caption_col{
+    opacity: 1;
+    margin-left: 0%;
+} */
+
+.swiper-slide-active .myoverlay .row .caption_col{
+    opacity: 1;
+    margin-left: 0%;
+}

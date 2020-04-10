@@ -1,0 +1,156 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+
+<div class="container-fluid whole_content">
+
+    <div class="row" style="margin-top: 8vw;">
+        <div class="col-sm-1"></div>
+        <p class="trapezoid_blue">
+            GALLERY NAME
+        </p>
+        <p class="trapezoid_white"></p>
+        <p class="trapezoid_yellow"></p>
+    </div>
+
+    <!-- All Images -->
+    <div class="container">
+        <div class="row" style="margin-top: 30px">
+            <div class="col-sm-3 col-12 ivcol" data-toggle="modal" data-target="#exampleModalCenter">
+                <div class="card ivcard shadow">
+                    <img src="{% static 'img/news/pic1.jpg' %}" alt="" style="object-fit: cover">
+                    <div class="ivoverup">
+                        <p>This is the caption for the image to check if it is being turnacated properly or not
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 col-12 ivcol">
+                <div class="card ivcard shadow">
+                    <img src="{% static 'img/news/pic1.jpg' %}" alt="" style="object-fit: cover">
+                    <div class="ivoverup">
+                        <p>This is the caption for the image to check if it is being turnacated properly or not
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 col-12 ivcol">
+                <div class="card ivcard shadow">
+                    <img src="{% static 'img/news/pic1.jpg' %}" alt="" style="object-fit: cover">
+                    <div class="ivoverup">
+                        <p>This is the caption for the image to check if it is being turnacated properly or not
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 col-12 ivcol">
+                <div class="card ivcard shadow">
+                    <img src="{% static 'img/news/pic1.jpg' %}" alt="" style="object-fit: cover">
+                    <div class="ivoverup">
+                        <p>This is the caption for the image to check if it is being turnacated properly or not
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 col-12 ivcol">
+                <div class="card ivcard shadow">
+                    <img src="{% static 'img/news/pic1.jpg' %}" alt="" style="object-fit: cover">
+                    <div class="ivoverup">
+                        <p>This is the caption for the image to check if it is being turnacated properly or not
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Image caption</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img src="{% static 'img/news/pic1.jpg' %}" style="width: 100%" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row myyellow" style="height: 5px; margin-top: 30px"></div>
+
+    <!-- Photos -->
+
+    <div class="row" style="margin-top: 50px;">
+        <div class="col-sm-1"></div>
+        <p class="trapezoid_blue">
+            PHOTOS
+        </p>
+        <p class="trapezoid_white"></p>
+        <p class="trapezoid_yellow"></p>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="MultiCarousel" data-items="1,2,3,3" data-slide="1" id="MultiCarousel" data-interval="1000">
+                <div class="MultiCarousel-inner">
+                    <div class="item">
+                        <div class="card mb-3 hovereffect1" style="display: table-cell; vertical-align: middle">
+                            <img src="{% static 'img/news/pic1.jpg' %}" class="card-img-top" alt="...">
+                            <div class="overlay1 text-center">
+                                <p style="font-size: 20px;font-weight: 100">Gallery Name</p>
+                                <a class="info gallink" href="#">View</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div class="card mb-3 hovereffect1" style="display: table-cell; vertical-align: middle">
+                            <img src="{% static 'img/news/pic1.jpg' %}" class="card-img-top" alt="...">
+                            <div class="overlay1 text-center">
+                                <p style="font-size: 20px;font-weight: 100">Gallery Name</p>
+                                <a class="info gallink" href="#">View</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div class="card mb-3 hovereffect1" style="display: table-cell; vertical-align: middle">
+                            <img src="{% static 'img/news/pic1.jpg' %}" class="card-img-top" alt="...">
+                            <div class="overlay1 text-center">
+                                <p style="font-size: 20px;font-weight: 100">Gallery Name</p>
+                                <a class="info gallink" href="#">View</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div class="card mb-3 hovereffect1" style="display: table-cell; vertical-align: middle">
+                            <img src="{% static 'img/news/pic1.jpg' %}" class="card-img-top" alt="...">
+                            <div class="overlay1 text-center">
+                                <p style="font-size: 20px;font-weight: 100">Gallery Name</p>
+                                <a class="info gallink" href="#">View</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <i class="fa fa-chevron-left left_arow"></i>
+                <i class="fa fa-chevron-right right_arow"></i>
+                <!-- <img src="img/leftarrow.png" class="leftar" alt=""> -->
+                <!-- <img src="img/rightarrow.png" class="rightar" alt=""> -->
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-5 col-3"></div>
+            <div class="col-sm-2 col-6 text-center myblue viewall">
+                <button class="btn" style="color: white; font-weight: bold">VIEW ALL</button>
+            </div>
+            <div class="col-sm-5 col-3"></div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

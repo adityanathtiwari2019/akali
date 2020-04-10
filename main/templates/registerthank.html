@@ -1,0 +1,19 @@
+{% extends "base.html" %} {% load static %} {% load appfilters %} {% block content %}
+
+<div class="container whole_content">
+    <div class="row" style="margin-top: 8vw">
+        <div class="col-sm-12 text-center">
+            <p style="font-size: 20px;font-weight: bold">Thanks for registering with us. We will reach you soon regarding your application</p>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 30px">
+        <div class="col-sm-12 text-center">
+            <a href="{% url 'main:home' %}">
+                <button class="btn btn-success" style="border-radius: 20px">CONTINUE</button>
+            </a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

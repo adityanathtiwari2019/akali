@@ -1,0 +1,9 @@
+.MultiCarousel { float: left; overflow: hidden; padding: 15px; width: 100%; position:relative; }
+    .MultiCarousel .MultiCarousel-inner { transition: 1s ease all; float: left; }
+        .MultiCarousel .MultiCarousel-inner .item { float: left;}
+        .MultiCarousel .MultiCarousel-inner .item > div { text-align: center; padding:10px; margin:10px; background:#ffffff; color:#666;}
+    .MultiCarousel .left_arow, .MultiCarousel .right_arow { position:absolute; border-radius:50%;top:calc(50% - 20px); font-size: 40px}
+    .MultiCarousel .left_arow { left:0; }
+    .MultiCarousel .right_arow { right:0; }
+    
+        .MultiCarousel .left_arow.over, .MultiCarousel .right_arow.over { pointer-events: none }

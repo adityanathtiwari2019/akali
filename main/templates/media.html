@@ -1,0 +1,127 @@
+{% extends "base.html" %} {% load static %} {% load appfilters %} {% block content %}
+
+<div class="container-fluid whole_content">
+    <!-- Videos -->
+    <div class="row" style="margin-top: 8vw;">
+        <div class="col-sm-1"></div>
+        <p class="trapezoid_blue">
+            VIDEOS
+        </p>
+        <p class="trapezoid_white"></p>
+        <p class="trapezoid_yellow"></p>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="MultiCarousel" data-items="1,2,3,3" data-slide="1" id="MultiCarouselvid" data-interval="1000">
+                <div class="MultiCarousel-inner">
+                    {% for video in videos %}
+                    <div class="item">
+                        <div class="card mb-3 hovereffect1" style="display: table-cell; vertical-align: middle">
+                            <img src="http://i1.ytimg.com/vi/{{ video.video_id }}/hqdefault.jpg" class="card-img-top" alt="...">
+                            <div class="overlay1 text-center">
+                                <p style="font-size: 14px;font-weight: 100">{{ video.title|getvideotitle }}</p>
+                                <a class="info" href="{% url 'main:videoplayer' video.video_id %}">
+                                    <img src="{% static 'img/play.png' %}" alt="" class="playbtn">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <i class="fa fa-chevron-left left_arow"></i>
+                <i class="fa fa-chevron-right right_arow"></i>
+                <!-- <img src="img/leftarrow.png" class="leftar" alt=""> -->
+                <!-- <img src="img/rightarrow.png" class="rightar" alt=""> -->
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-5 col-3"></div>
+            <div class="col-sm-2 col-6 text-center myblue viewall">
+                <a href="{% url 'main:allvideos' %}">
+                    <button class="btn" style="color: white; font-weight: bold">VIEW ALL</button>
+                </a>
+            </div>
+            <div class="col-sm-5 col-3"></div>
+        </div>
+    </div>
+
+    <div class="row myyellow" style="height: 5px; margin-top: 30px"></div>
+
+
+    <!-- Photos -->
+
+    <div class="row" style="margin-top: 30px;">
+        <div class="col-sm-1"></div>
+        <p class="trapezoid_blue">
+            PHOTOS
+        </p>
+        <p class="trapezoid_white"></p>
+        <p class="trapezoid_yellow"></p>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="MultiCarousel" data-items="1,2,3,3" data-slide="1" id="MultiCarouselpic" data-interval="1000">
+                <div class="MultiCarousel-inner">
+                    <div class="item">
+                        <div class="card mb-3 hovereffect1" style="display: table-cell; vertical-align: middle">
+                            <img src="{% static 'img/news/pic1.jpg' %}" class="card-img-top" alt="...">
+                            <div class="overlay1 text-center">
+                                <p style="font-size: 20px;font-weight: 100">Gallery Name</p>
+                                <a class="info gallink" href="#">View</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div class="card mb-3 hovereffect1" style="display: table-cell; vertical-align: middle">
+                            <img src="{% static 'img/news/pic1.jpg' %}" class="card-img-top" alt="...">
+                            <div class="overlay1 text-center">
+                                <p style="font-size: 20px;font-weight: 100">Gallery Name</p>
+                                <a class="info gallink" href="#">View</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div class="card mb-3 hovereffect1" style="display: table-cell; vertical-align: middle">
+                            <img src="{% static 'img/news/pic1.jpg' %}" class="card-img-top" alt="...">
+                            <div class="overlay1 text-center">
+                                <p style="font-size: 20px;font-weight: 100">Gallery Name</p>
+                                <a class="info gallink" href="#">View</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div class="card mb-3 hovereffect1" style="display: table-cell; vertical-align: middle">
+                            <img src="{% static 'img/news/pic1.jpg' %}" class="card-img-top" alt="...">
+                            <div class="overlay1 text-center">
+                                <p style="font-size: 20px;font-weight: 100">Gallery Name</p>
+                                <a class="info gallink" href="#">View</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <i class="fa fa-chevron-left left_arow"></i>
+                <i class="fa fa-chevron-right right_arow"></i>
+                <!-- <img src="img/leftarrow.png" class="leftar" alt=""> -->
+                <!-- <img src="img/rightarrow.png" class="rightar" alt=""> -->
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-5 col-3"></div>
+            <div class="col-sm-2 col-6 text-center myblue viewall">
+                <a href="{% url 'main:allphotos' %}">
+                    <button class="btn" style="color: white; font-weight: bold">VIEW ALL</button>
+                </a>
+            </div>
+            <div class="col-sm-5 col-3"></div>
+        </div>
+    </div>
+</div>
+
+{% endblock%}

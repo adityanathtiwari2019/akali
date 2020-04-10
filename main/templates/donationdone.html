@@ -1,0 +1,76 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+
+<div class="container-fluid whole_content">
+
+    <!-- Success Status -->
+    <div class="row" style="margin-top: 8vw">
+        <div class="col-sm-5"></div>
+        <div class="col-sm-2 text-center" style="background-color: green;color: white;
+        padding: 10px;border-radius: 30px">
+            Payment Successful
+        </div>
+        <div class="col-sm-5"></div>
+    </div>
+
+    <div class="row" style="margin-top: 20px">
+        <div class="col-sm-12 text-center" style="font-size: 20px">
+            Thanks for your contribution
+        </div>
+    </div>
+
+
+    <div class="row" style="margin-top: 50px">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6 text-center">
+            <div class="row" style="border-bottom: 1px solid #00000080;margin-bottom: 10px">
+                <div class="col-sm-4">
+                    Transaction ID:
+                </div>
+                <div class="col-sm-8">
+                    {{ response.TXNID }}
+                </div>
+            </div>
+
+            <div class="row" style="border-bottom: 1px solid #00000080;margin-bottom: 10px">
+                <div class="col-sm-4">
+                    Amount:
+                </div>
+                <div class="col-sm-8">
+                    {{ response.TXNAMOUNT }}
+                </div>
+            </div>
+
+            <div class="row" style="border-bottom: 1px solid #00000080;margin-bottom: 10px">
+                <div class="col-sm-4">
+                    Payment Mode:
+                </div>
+                <div class="col-sm-8">
+                    {{response.PAYMENTMODE}}
+                </div>
+            </div>
+
+            <div class="row" style="border-bottom: 1px solid #00000080;margin-bottom: 10px">
+                <div class="col-sm-4">
+                    Date:
+                </div>
+                <div class="col-sm-8">
+                    {{response.TXNDATE}}
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
+
+    <div class="row" style="margin-top: 80px">
+        <div class="col-sm-5"></div>
+        <div class="col-sm-2 text-center" style="background-color: green;border-radius: 30px">
+            <a href="{% url 'main:home' %}">
+                <button class="btn btn-block" style="color: white">Done</button>
+            </a>
+        </div>
+        <div class="col-sm-5"></div>
+    </div>
+
+</div>
+
+{% endblock %}

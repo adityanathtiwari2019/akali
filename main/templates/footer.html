@@ -1,0 +1,75 @@
+{% load static %}
+
+<div class="container-fluid whole_content ">
+    <div class="row footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4 col-4" style="color: white">
+                    <p class="footerhead">Contact us</p>
+                    <div class="myyellow" style="width: 30%;height: 3px;margin-bottom: 30px"></div>
+
+                    <p>Shiromani Akali Dal Office Block 6, Sector 28B, Madhya Marg Chandigarh, India.
+                    </p>
+
+                    <p>0172-2746383
+                        <br> info@sadd.in
+                    </p>
+                </div>
+
+                <div class="col-sm-4 col-4" style="color: white">
+                    <p class="footerhead">About</p>
+                    <div class="myyellow" style="width: 30%;height: 3px;margin-bottom: 30px"></div>
+
+                    <a href="{% url 'main:aboutus' %}">
+                        <p>History</p>
+                    </a>
+                    <a href="{% url 'main:aboutus' %}">
+                        <p>Vision/Mission</p>
+                    </a>
+                    <p>Timeline</p>
+                    <p>Core Committee</p>
+                    <p>Office Bearers</p>
+                    <p>Spokesperson</p>
+                    <p>M.L.As</p>
+                    <p>Wings</p>
+                </div>
+
+                <div class="col-sm-4 col-4" style="color: white">
+                    <p class="footerhead">Media</p>
+                    <div class="myyellow" style="width: 30%;height: 3px;margin-bottom: 30px"></div>
+
+                    <a href="{% url 'main:allnews' %}">
+                        <p>News</p>
+                    </a>
+                    <p>Press release</p>
+
+                    <a href="{% url 'main:allvideos' %}">
+                        <p>Videos</p>
+                    </a>
+                    <a href="{% url 'main:allphotos' %}">
+                        <p>Photos</p>
+                    </a>
+                    <p>Blogs</p>
+
+                    <div style="margin-top: 50px">
+                        <a href="{{ social_links.0.fblink }}" target="_blank">
+                            <img src="{% static 'img/fb.png' %}" class="top_social_icon">
+                        </a>
+                        <a href="{{ social_links.0.instalink }}" target="_blank">
+                            <img src="{% static 'img/insta.png' %}" class="top_social_icon">
+                        </a>
+                        <a href="{{ social_links.0.twitterlink }}" target="_blank">
+                            <img src="{% static 'img/twitter.png' %}" class="top_social_icon">
+                        </a>
+                        <a href="{{ social_links.0.ytlink }}" target="_blank">
+                            <img src="{% static 'img/yt.png' %}" class="top_social_icon">
+                        </a>
+                        <a href="{{ social_links.0.linkedlink }}" target="_blank">
+                            <img src="{% static 'img/linkedin.png' %}" class="top_social_icon">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

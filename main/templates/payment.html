@@ -1,0 +1,20 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="container-fluid whole_content">
+    <div class="row" style="margin-top: 8vw;">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8 text-center" style="font-size: 20px">
+            Redirecting you to payment page, Please don't refresh this page
+            <form action="https://securegw-stage.paytm.in/theia/processTransaction" method="post" name="paytm">
+                {% for key, value in params_dict.items %}
+                <input type="text" name="{{key}}" value="{{value}}" hidden> {% endfor %}
+        </div>
+        <div class="col-sm-2"></div>
+    </div>
+</div>
+
+<script>
+    document.paytm.submit();
+</script>
+
+{% endblock %}

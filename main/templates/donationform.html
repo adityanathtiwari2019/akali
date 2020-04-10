@@ -1,0 +1,177 @@
+{% extends "base.html" %} {% load static %} {% load appfilters %} {% block content %}
+
+<div class="container-fluid whole_content">
+
+    <div class="row" style="margin-top: 8vw;">
+        <div class="col-sm-1"></div>
+        <p class="trapezoid_blue">
+            Donation Form
+        </p>
+        <p class="trapezoid_white"></p>
+        <p class="trapezoid_yellow"></p>
+    </div>
+
+
+    <div class="row">
+        <div class="col-sm-1"></div>
+        <div class="col-sm-5">
+            <form action="{% url 'main:takedonation' %}" id="donateform" method="POST">
+                {% csrf_token %}
+                <!-- Full Name -->
+                <p class="formerror" hidden id="namerror">Full name is required</p>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Full Name</span>
+                    </div>
+                    <input type="text" class="form-control" id="name" name="name" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                </div>
+
+                <!-- Phone Number -->
+                <p class="formerror" hidden id="phoneerror">Please enter a valid phone number</p>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Phone Number | +91</span>
+                    </div>
+                    <input type="number" class="form-control" name="phone" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                </div>
+
+                <!-- Email ID -->
+                <p class="formerror" hidden id="emailerror">Please enter a valid email ID</p>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Email</span>
+                    </div>
+                    <input type="text" class="form-control" name="email" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                </div>
+
+                <!-- Address -->
+                <p class="formerror" hidden id="addresserror">Please enter a valid address</p>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Address</span>
+                    </div>
+                    <input type="text" class="form-control" name="address" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                </div>
+
+                <!-- Amount -->
+                <p class="formerror" hidden id="amounterror">Please enter a valid amount</p>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Amount</span>
+                    </div>
+                    <input type="number" class="form-control" name="amount" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                </div>
+
+                <!-- State -->
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">State</span>
+                    </div>
+                    <select id="state" name="state" class="form-control">
+                        <option value="Andhra Pradesh">Andhra Pradesh</option>
+                        <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                        <option value="Assam">Assam</option>
+                        <option value="Bihar">Bihar</option>
+                        <option value="Chhattisgarh">Chhattisgarh</option>
+                        <option value="Goa">Goa</option>
+                        <option value="Gujarat">Gujarat</option>
+                        <option value="Haryana">Haryana</option>
+                        <option value="Himachal Pradesh">Himachal Pradesh</option>
+                        <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                        <option value="Jharkhand">Jharkhand</option>
+                        <option value="Karnataka">Karnataka</option>
+                        <option value="Kerala">Kerala</option>
+                        <option value="Madya Pradesh">Madya Pradesh</option>
+                        <option value="Maharashtra">Maharashtra</option>
+                        <option value="Manipur">Manipur</option>
+                        <option value="Meghalaya">Meghalaya</option>
+                        <option value="Mizoram">Mizoram</option>
+                        <option value="Nagaland">Nagaland</option>
+                        <option value="Orissa">Orissa</option>
+                        <option value="Punjab">Punjab</option>
+                        <option value="Rajasthan">Rajasthan</option>
+                        <option value="Sikkim">Sikkim</option>
+                        <option value="Tamil Nadu">Tamil Nadu</option>
+                        <option value="Telagana">Telagana</option>
+                        <option value="Tripura">Tripura</option>
+                        <option value="Uttaranchal">Uttaranchal</option>
+                        <option value="Uttar Pradesh">Uttar Pradesh</option>
+                        <option value="West Bengal">West Bengal</option>
+                        <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                        <option value="Chandigarh">Chandigarh</option>
+                        <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
+                        <option value="Daman and Diu">Daman and Diu</option>
+                        <option value="Delhi">Delhi</option>
+                        <option value="Lakshadeep">Lakshadeep</option>
+                        <option value="Pondicherry">Pondicherry</option>
+                    </select>
+                </div>
+
+                <!-- City -->
+                <p class="formerror" hidden id="cityerror">Please enter a valid city</p>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">City</span>
+                    </div>
+                    <input type="text" class="form-control" name="city" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                </div>
+
+                <!-- PinCode -->
+                <p class="formerror" hidden id="pincodeerror">Please enter a valid pincode</p>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Pincode</span>
+                    </div>
+                    <input type="number" class="form-control" name="pincode" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                </div>
+
+                <!-- Date Of Birth -->
+                <p class="formerror" hidden id="doberror">Please enter a valid date of birth</p>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Date of Birth</span>
+                    </div>
+                    <input type="date" class="form-control" name="dob" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                </div>
+
+                <!-- Pan -->
+                <p class="formerror" hidden id="panerror">Please enter a valid PAN</p>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Pan No.</span>
+                    </div>
+                    <input type="text" class="form-control" name="pan" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                </div>
+
+                <!-- Accept -->
+                <p class="formerror" hidden id="accepterror">Please read and accept the terms </p>
+                <div class="input-group mb-3">
+                    <label class="checkbox-inline" style="text-align:left;">
+                        <input type="checkbox" value="" style="margin-top:0px;" name="accept">
+                        <strong style="font-weight:bold;">I ACCEPT THE FOLLOWING TERMS AND CONDITIONS:
+                        </strong>
+                        <br>
+                        <ul style="list-style-type:disc">
+                            <li>I declare that I am a citizen of India </li>
+                            <li>I am above the age of 18 years.</li>
+                            <li>I am making this contribution voluntarily from my own personal bank account or credit card and
+                                out of funds generated legally/owned by me in India.</li>
+                            <li>I further declare that the said contribution is being made by me on my own volition without any
+                                undue influence, coercion, promise, or solicitation of any kind.</li>
+                            <li>I also declare that my voluntary contribution is fully compliant with norms and stipulations
+                                of the Foreign Contribution (Regulation) Act, 2010 (FCRA).</li>
+                            <li>The details I have provided above are true to the best of my knowledge and nothing has been concealed
+                                or misrepresented.</li>
+                            <li>I agree to be contacted by the Congress Party, its frontal organizations, affiliates, and partners.
+                            </li>
+                            <li>I have read and accept the above Terms &amp; Conditions.</li>
+                        </ul>
+                    </label>
+                </div>
+            </form>
+            <input class="btn" type="button" style="background-color: #0066a4;color: white" onclick="submitform()" value="Pay Now">
+        </div>
+    </div>
+</div>
+
+{% endblock %}

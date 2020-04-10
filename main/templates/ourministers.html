@@ -1,0 +1,46 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+
+
+<div class="container-fluid whole_content">
+    <!-- News -->
+    <div class="row" style="margin-top: 8vw;margin-bottom: 20px">
+        <div class="col-sm-1"></div>
+        <p class="trapezoid_blue">
+            OUR MINISTERS
+        </p>
+        <p class="trapezoid_white"></p>
+        <p class="trapezoid_yellow"></p>
+    </div>
+
+    <div class="container">
+        <div class="row">
+
+            {% for minister in ministers %}
+            <div class="col-sm-3 col-12 text-center mcol">
+                <a href="{% url 'main:minprofile' minister.id %}">
+                    <img src="{{ minister.image.url }}" class="shadow ministercol" alt="">
+                    <p class="ministername">{{minister.name}}</p>
+                </a>
+
+                <div class="row">
+                    <div class="col-sm-12 col-12 text-center">
+                        <a href="{{ minister.fblink }}" target="_blank">
+                            <img src="{% static 'icons/fb.svg' %}" class="ministersocial" alt="">
+                        </a>
+                        <a href="{{ minister.twitterlink }}" target="_blank">
+                            <img src="{% static 'icons/twitter.svg' %}" class="ministersocial" alt="">
+                        </a>
+                        <a href="{{minister.linkedinlink }}" target="_blank">
+                            <img src="{% static 'icons/li.svg' %}" class="ministersocial" alt="">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="myyellow" style="height: 2px;margin-top: 20px;width: 80%;margin-left: 10%"></div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

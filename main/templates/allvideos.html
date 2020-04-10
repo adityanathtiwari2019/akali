@@ -1,0 +1,37 @@
+{% extends "base.html" %} {% load static %} {% load appfilters %} {% block content %}
+
+<div class="container-fluid whole_content">
+
+
+    <!-- Photos -->
+
+    <div class="row" style="margin-top: 8vw;">
+        <div class="col-sm-1"></div>
+        <p class="trapezoid_blue">
+            All Videos
+        </p>
+        <p class="trapezoid_white"></p>
+        <p class="trapezoid_yellow"></p>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            {% for video in videos %}
+            <div class="col-sm-3 ivcol">
+                <div class="card mb-3 hovereffect1" style="display: table-cell; vertical-align: middle">
+                    <img src="http://i1.ytimg.com/vi/{{ video.video_id }}/hqdefault.jpg" class="card-img-top" alt="...">
+                    <div class="overlay1 text-center">
+                        <p style="font-size: 10px;font-weight: 100">{{ video.title|getvideotitle }}</p>
+                        <a class="info" href="{% url 'main:videoplayer' video.video_id %}">
+                            <img src="{% static 'img/play.png' %}" alt="" class="playbtn">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock %}

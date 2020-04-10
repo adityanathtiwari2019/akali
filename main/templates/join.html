@@ -1,0 +1,501 @@
+{% extends "base.html" %} {% load static %} {% load appfilters %} {% block content %}
+
+<style>
+    .joincard {
+        transition: transform 0.2s;
+    }
+
+    .joincard:hover {
+        transform: scale(1.05);
+    }
+
+    .cardscol {
+        margin-top: -160px
+    }
+
+    @media(max-width:603px) {
+        .cardscol {
+            margin-top: 20px;
+        }
+    }
+</style>
+
+<div class="container-fluid whole_content">
+    <div class="row" style="margin-top: 8vw;">
+        <div class="col-sm-1"></div>
+        <p class="trapezoid_blue">
+            MEMBERSHIP FORM
+        </p>
+        <p class="trapezoid_white"></p>
+        <p class="trapezoid_yellow"></p>
+    </div>
+
+    <div class="container" style="margin-top: 20px">
+        <div class="row">
+            <div class="col-sm-5 col-12">
+                <!-- Login Form -->
+                <form action="" id="loginform" style="display: none">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Email/Phone</span>
+                        </div>
+                        <input type="email" class="form-control" id="luser" name="luser" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Password</span>
+                        </div>
+                        <input type="password" class="form-control" id="lpass" name="lpass" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                    </div>
+
+                    <input type="submit" value="Login" class="btn btn-success">
+                </form>
+
+                {% for message in messages %}
+                <p style="color: rgb(201, 0, 0)">{{message}}</p>
+                {% endfor %}
+
+                <!-- Volunteer form -->
+                <form action="{% url 'main:bemember' %}" method="POST" id="volunteerform">
+                    {% csrf_token %}
+                    <p class="formerror" hidden id="nameerror">Please enter your full name</p>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Full Name</span>
+                        </div>
+                        <input type="text" class="form-control" id="vname" name="vname" value="{{ formdata.fullname }}" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-sm">
+                    </div>
+
+                    <p class="formerror" hidden id="emailerror">Please enter a valid email ID</p>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Email</span>
+                        </div>
+                        <input type="email" class="form-control" id="vemail" name="vemail" value="{{ formdata.email }}" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-sm">
+                    </div>
+
+                    <p class="formerror" hidden id="phoneerror">Please enter a valid phone number</p>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Phone | +91</span>
+                        </div>
+                        <input type="tel" class="form-control" id="vphone" name="vphone" value="{{ formdata.phone }}" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-sm">
+                    </div>
+
+                    <p class="formerror" hidden id="doberror">Please enter your date of birth</p>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Date of Birth</span>
+                        </div>
+                        <input type="date" class="form-control" id="vdob" name="vdob" value="{{ formdata.dob }}" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-sm">
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Gender</span>
+                        </div>
+                        <select id="vgender" name="vgender" class="form-control" value="{{ formdata.gender }}">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <!-- State -->
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">State</span>
+                        </div>
+                        <select id="vstate" name="vstate" value="{{ formdata.state }}" class="form-control">
+                            <option value="Andhra Pradesh">Andhra Pradesh</option>
+                            <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                            <option value="Assam">Assam</option>
+                            <option value="Bihar">Bihar</option>
+                            <option value="Chhattisgarh">Chhattisgarh</option>
+                            <option value="Goa">Goa</option>
+                            <option value="Gujarat">Gujarat</option>
+                            <option value="Haryana">Haryana</option>
+                            <option value="Himachal Pradesh">Himachal Pradesh</option>
+                            <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                            <option value="Jharkhand">Jharkhand</option>
+                            <option value="Karnataka">Karnataka</option>
+                            <option value="Kerala">Kerala</option>
+                            <option value="Madya Pradesh">Madya Pradesh</option>
+                            <option value="Maharashtra">Maharashtra</option>
+                            <option value="Manipur">Manipur</option>
+                            <option value="Meghalaya">Meghalaya</option>
+                            <option value="Mizoram">Mizoram</option>
+                            <option value="Nagaland">Nagaland</option>
+                            <option value="Orissa">Orissa</option>
+                            <option value="Punjab">Punjab</option>
+                            <option value="Rajasthan">Rajasthan</option>
+                            <option value="Sikkim">Sikkim</option>
+                            <option value="Tamil Nadu">Tamil Nadu</option>
+                            <option value="Telagana">Telagana</option>
+                            <option value="Tripura">Tripura</option>
+                            <option value="Uttaranchal">Uttaranchal</option>
+                            <option value="Uttar Pradesh">Uttar Pradesh</option>
+                            <option value="West Bengal">West Bengal</option>
+                            <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                            <option value="Chandigarh">Chandigarh</option>
+                            <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
+                            <option value="Daman and Diu">Daman and Diu</option>
+                            <option value="Delhi">Delhi</option>
+                            <option value="Lakshadeep">Lakshadeep</option>
+                            <option value="Pondicherry">Pondicherry</option>
+                        </select>
+                    </div>
+
+                    <p class="formerror" hidden id="cityerror">Please enter your city/village</p>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">City/Village</span>
+                        </div>
+                        <input type="text" class="form-control" id="vcity" name="vcity" value="{{ formdata.city }}" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-sm">
+                    </div>
+
+                    <p class="formerror" hidden id="addresserror">Please enter a valid address</p>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Address</span>
+                        </div>
+                        <input type="text" class="form-control" id="vaddress" name="vaddress" value="{{ formdata.address }}" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-sm">
+                    </div>
+
+                    <p class="formerror" hidden id="pinerror">Please enter a pincode</p>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Pincode</span>
+                        </div>
+                        <input type="number" class="form-control" id="vpin" name="vpin" value="{{ formdata.pincode }}" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-sm">
+                    </div>
+
+                    <input type="text" hidden name="vtype" value="2" id="vtype">
+
+                    <p class="formerror" hidden id="votererror">Please enter your voter ID number</p>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Voter ID Number</span>
+                        </div>
+                        <input type="text" class="form-control" id="vvoter" name="vvoter" value="{{ formdata.voterid }}" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-sm">
+                    </div>
+
+                    <p class="formerror" hidden id="passerror">Please enter at least 6 character password to signup</p>
+                    <div class="input-group mb-3" hidden>
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Password</span>
+                        </div>
+                        <input type="password" class="form-control" id="vpassword" name="vpassword" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                    </div>
+
+
+                    <div id="volunteerextra" style="display: none;">
+                        <p class="formerror" hidden id="contriberror">Please select at least one option below</p>
+                        <p style="font-weight: bold">How would you like to contribute?</p>
+                        <input type="checkbox" onclick="itsp()" name="vit" id="vit">
+                        <p style="display: inline;margin-left: 10px">IT support (coding, web design etc.)</p>
+                        <br>
+                        <input type="checkbox" onclick="digital()" name="vdigital" id="vdigital">
+                        <p style="display: inline;margin-left: 10px">Become a digital activist</p>
+                        <br>
+                        <input type="checkbox" onclick="party()" name="vparty" id="vparty">
+                        <p style="display: inline;margin-left: 10px">Attend party events</p>
+                        <br>
+                        <input type="checkbox" onclick="content()" name="vcontent" id="vcontent">
+                        <p style="display: inline;margin-left: 10px">Content writing (mention preferred language below)</p>
+                        <br>
+                        <input type="checkbox" onclick="other()" name="vother" id="vother">
+                        <p style="display: inline;margin-left: 10px">Other</p>
+                        <br>
+
+                        <p style="font-weight: bold;margin-top: 20px">Would you like to tell us more about yourself?</p>
+                        <textarea name="vmore" id="vmore" style="width: 100%" rows="5" value="{{ formdata.more }}" class="form-control"></textarea>
+
+                    </div>
+                    <p class="formerror" hidden id="accepterror">Please read and accept the terms below</p>
+                    <div class="row" style="margin-top: 20px">
+                        <div class="col-sm-1">
+                            <input type="checkbox" onclick="acceptterms()" name="vaccept" id="vaccept">
+                        </div>
+                        <div class="col-sm-11">
+                            I am above 18 years , and not enrolled as a government employee. I am not a member of any other political party registered
+                            with the Election Commission of India. I am not a member with any organization whose views, policies
+                            or actions are in conflict with the objective of the party. I have not been convicted of any
+                            offense involving moral turpitude. I hereby consent to receiving any communication from the party
+                            either in writing, electronically and/or in any audio-visual format via phone (including SMS/MMS),
+                            email and/or at my address.
+                        </div>
+                    </div>
+                    <input type="button" onclick="submitmemberform()" style="margin-top: 30px" class="btn btn-success" value="SUBMIT">
+                </form>
+
+                
+
+                <!-- Intern Form -->
+                <form action="{% url 'main:internsubmit' %}" method="POST" id="internform" style="display: none" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <p class="formerror" hidden id="inameerror">Please enter your full name</p>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Full Name</span>
+                        </div>
+                        <input type="text" class="form-control" value="{{ formdata.fullname }}" id="iname" name="iname" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-sm">
+                    </div>
+
+                    <p class="formerror" hidden id="iemailerror">Please enter a valid email ID</p>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Email</span>
+                        </div>
+                        <input type="email" class="form-control" id="iemail" value="{{ formdata.email }}" name="iemail" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-sm">
+                    </div>
+
+                    <p class="formerror" hidden id="iphoneerror">Please enter a valid phone number</p>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Phone</span>
+                        </div>
+                        <input type="tel" class="form-control" id="iphone" name="iphone" value="{{ formdata.phone }}" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-sm">
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Duration of internship</span>
+                        </div>
+                        <select id="iduration" name="iduration" value="{{ formdata.duration }}" class="form-control">
+                            <option value="4 Week">4 Week</option>
+                            <option value="6 Week or more">6 Week or more</option>
+                        </select>
+                    </div>
+
+                    <p class="formerror" hidden id="iageerror">Please enter a valid age</p>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Age</span>
+                        </div>
+                        <input type="number" class="form-control" value="{{ formdata.age }}" id="iage" name="iage" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-sm">
+                    </div>
+
+                    <!-- State -->
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">State</span>
+                        </div>
+                        <select id="istate" name="istate" class="form-control" value="{{ formdata.state }}">
+                            <option value="Andhra Pradesh">Andhra Pradesh</option>
+                            <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                            <option value="Assam">Assam</option>
+                            <option value="Bihar">Bihar</option>
+                            <option value="Chhattisgarh">Chhattisgarh</option>
+                            <option value="Goa">Goa</option>
+                            <option value="Gujarat">Gujarat</option>
+                            <option value="Haryana">Haryana</option>
+                            <option value="Himachal Pradesh">Himachal Pradesh</option>
+                            <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                            <option value="Jharkhand">Jharkhand</option>
+                            <option value="Karnataka">Karnataka</option>
+                            <option value="Kerala">Kerala</option>
+                            <option value="Madya Pradesh">Madya Pradesh</option>
+                            <option value="Maharashtra">Maharashtra</option>
+                            <option value="Manipur">Manipur</option>
+                            <option value="Meghalaya">Meghalaya</option>
+                            <option value="Mizoram">Mizoram</option>
+                            <option value="Nagaland">Nagaland</option>
+                            <option value="Orissa">Orissa</option>
+                            <option value="Punjab">Punjab</option>
+                            <option value="Rajasthan">Rajasthan</option>
+                            <option value="Sikkim">Sikkim</option>
+                            <option value="Tamil Nadu">Tamil Nadu</option>
+                            <option value="Telagana">Telagana</option>
+                            <option value="Tripura">Tripura</option>
+                            <option value="Uttaranchal">Uttaranchal</option>
+                            <option value="Uttar Pradesh">Uttar Pradesh</option>
+                            <option value="West Bengal">West Bengal</option>
+                            <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                            <option value="Chandigarh">Chandigarh</option>
+                            <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
+                            <option value="Daman and Diu">Daman and Diu</option>
+                            <option value="Delhi">Delhi</option>
+                            <option value="Lakshadeep">Lakshadeep</option>
+                            <option value="Pondicherry">Pondicherry</option>
+                        </select>
+                    </div>
+
+                    <p class="formerror" hidden id="icityerror">Please enter your city/village</p>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">City/Village</span>
+                        </div>
+                        <input type="text" class="form-control" id="icity" name="icity" value="{{ formdata.city }}" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-sm">
+                    </div>
+
+                    <p class="formerror" hidden id="icollegeerror">Please enter your college name</p>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">College Name</span>
+                        </div>
+                        <input type="text" class="form-control" id="icollege" name="icollege" value="{{ formdata.college }}" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-sm">
+                    </div>
+
+                    <p class="formerror" hidden id="icourseerror">Please enter your course name</p>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Program/Course</span>
+                        </div>
+                        <input type="text" class="form-control" id="icourse" name="icourse" value="{{ formdata.course }}" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-sm">
+                    </div>
+
+                    <p class="formerror" hidden id="iinteresterror">Please enter your interest</p>
+                    <div id="volunteerextra">
+                        <p style="font-weight: bold">Interested for internship in:</p>
+                        <input type="radio" onclick="checkinterest()" name="iinterest" value="Research">
+                        <p style="display: inline;margin-left: 10px">Research</p>
+                        <br>
+                        <input type="radio" onclick="checkinterest()" name="iinterest" value="Field Survey">
+                        <p style="display: inline;margin-left: 10px">Field Survey</p>
+                        <br>
+                        <input type="radio" onclick="checkinterest()" name="iinterest" value="Social media management">
+                        <p style="display: inline;margin-left: 10px">Social media management</p>
+                        <br>
+                        <input type="radio" onclick="checkinterest()" name="iinterest" value="Content writing">
+                        <p style="display: inline;margin-left: 10px">Content writing</p>
+                        <br>
+                        <input type="radio" onclick="checkinterest()" name="iinterest" value="Data management">
+                        <p style="display: inline;margin-left: 10px">Data management</p>
+                        <br>
+                        <input type="radio" onclick="checkinterest()" name="iinterest" value="GIF / Video / Graphic">
+                        <p style="display: inline;margin-left: 10px">GIF / Video / Graphic</p>
+                        <br>
+                    </div>
+
+                    <br>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Do you have a laptop?</span>
+                        </div>
+                        <select id="ilaptop" name="ilaptop" class="form-control" value="{{ formdata.laptop }}">
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                            <option value="desktop">No, But I have a desktop</option>
+                        </select>
+                    </div>
+
+                    <p class="formerror" hidden id="itenterror">Please enter your tentative date to start</p>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Tentative start date of internship</span>
+                        </div>
+                        <input type="date" class="form-control" id="itsd" name="itsd" value="{{ formdata.tsd }}" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-sm">
+                    </div>
+
+                    <p class="formerror" hidden id="ipasserror">Please enter at least a 6 character password</p>
+                    <div class="input-group mb-3" hidden>
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Password</span>
+                        </div>
+                        <input type="password" class="form-control" id="ipassword" name="ipassword" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                    </div>
+
+                    <p class="formerror" hidden id="iresumeerror">Please enter your resume</p>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Upload Resume (Doc/PDF)</span>
+                        </div>
+                        <input type="file" onclick="selectingfile()" class="form-control" id="idoc" name="idoc" aria-label="Sizing example input"
+                            aria-describedby="inputGroup-sizing-sm">
+                    </div>
+
+                    <p class="formerror" hidden id="iaccepterror">Please read and accept the terms below</p>
+                    <div class="row" style="margin-top: 20px">
+                        <div class="col-sm-1">
+                            <input type="checkbox" name="iaccept" id="iaccept">
+                        </div>
+                        <div class="col-sm-11">
+                            The particulars and statements made above are correct to the best of my knowledge and nothing has been concealed or withheld.
+                        </div>
+                    </div>
+
+                    <input type="button" onclick="submitintern()" value="Submit" style="margin-top: 30px" class="btn btn-success">
+                </form>
+            </div>
+
+            <div class="col-sm-7 col-12 cardscol">
+                <div class="row">
+                    <div class="col-sm-4 col-6" style="margin-bottom: 30px">
+                        <div class="card shadow joincard" id="mbcard" onclick="member()" style="padding: 10px;border: 2px solid var(--main-blue)">
+                            <img src="{% static 'icons/idcard.svg' %}" alt="" style="width: 100%">
+                            <div class="card-body text-center" style="font-weight: bold">
+                                BECOME A MEMBER
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 col-6">
+                        <div class="card shadow joincard" id="volcard" onclick="volunteer()" style="padding: 10px;border: 2px solid var(--main-blue)">
+                            <img src="{% static 'icons/badge.svg' %}" alt="" style="width: 100%">
+                            <div class="card-body text-center" style="font-weight: bold">
+                                JOIN AS VOLUNTEER
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 col-6">
+                        <div class="card shadow joincard" id="intcard" onclick="intern()" style="padding: 10px;border: 2px solid var(--main-blue)">
+                            <img src="{% static 'icons/intern.png' %}" alt="" style="width: 100%">
+                            <div class="card-body text-center" style="font-weight: bold">
+                                INTERNSHIP
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function volunteer() {
+        $('#vtype').val('1');
+        $('#volunteerextra').css('display', '');
+        $('#volunteerform').css('display', '');
+        $('#loginform').css('display', 'none');
+        $('#internform').css('display', 'none');
+        $(".trapezoid_blue").text("VOLUNTEER FORM")
+    }
+
+    function member() {
+        $('#vtype').val('2');
+        $('#volunteerextra').css('display', 'none');
+        $('#loginform').css('display', 'none');
+        $('#volunteerform').css('display', '');
+        $('#internform').css('display', 'none');
+        $(".trapezoid_blue").text("MEMBERSHIP FORM")
+    }
+
+    function intern() {
+        $('#vtype').val('3');
+        $('#volunteerextra').css('display', 'none');
+        $('#loginform').css('display', 'none');
+        $('#volunteerform').css('display', 'none');
+        $('#internform').css('display', '');
+        $(".trapezoid_blue").text("INTERNSHIP FORM")
+    }
+</script> {% endblock %}

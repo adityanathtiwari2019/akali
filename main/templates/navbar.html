@@ -1,0 +1,207 @@
+{% load static %}
+
+<style>
+    .sidepanel {
+        width: 0;
+        position: fixed;
+        z-index: 1;
+        height: 250px;
+        top: 0;
+        left: 0;
+        background-color: #111;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+    }
+
+    .sidepanel a {
+        padding: 8px 8px 8px 32px;
+        text-decoration: none;
+        font-size: 25px;
+        color: #818181;
+        display: block;
+        transition: 0.3s;
+    }
+
+    .sidepanel a:hover {
+        color: #f1f1f1;
+    }
+
+    .sidepanel .closebtn {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+    }
+
+    .openbtn {
+        font-size: 20px;
+        cursor: pointer;
+        background-color: #111;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+    }
+
+    .openbtn:hover {
+        background-color: #444;
+    }
+
+    .sticky {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        margin-top: 0;
+    }
+
+    .stickysm {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        margin-top: 0;
+    }
+</style>
+
+<script>
+    function openNav() {
+        document.getElementById("mySidepanel").style.width = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidepanel").style.width = "0";
+    }
+</script>
+
+<div class="container-fluid whole_content bignav" style="z-index: 999999;">
+    <!-- Social Media Icons -->
+    <div class="row" style="z-index: 999999;">
+        <div class="col-sm-3" style="margin-bottom: -120px;z-index: 999999;" id="logocol">
+            <img src="{% static 'img/logo.png' %}" alt="" style="width: 180px; margin-left: 20px">
+        </div>
+        <div class="col-sm-8 text-right top_social">
+            <a href="{{ social_links.0.fblink }}" target="_blank">
+                <img src="{% static 'img/fb.png' %}" class="top_social_icon">
+            </a>
+            <a href="{{ social_links.0.instalink }}" target="_blank">
+                <img src="{% static 'img/insta.png' %}" class="top_social_icon">
+            </a>
+            <a href="{{ social_links.0.twitterlink }}" target="_blank">
+                <img src="{% static 'img/twitter.png' %}" class="top_social_icon">
+            </a>
+            <a href="{{ social_links.0.ytlink }}" target="_blank">
+                <img src="{% static 'img/yt.png' %}" class="top_social_icon">
+            </a>
+            <a href="{{ social_links.0.linkedlink }}" target="_blank">
+                <img src="{% static 'img/linkedin.png' %}" class="top_social_icon">
+            </a>
+        </div>
+    </div>
+
+    <!-- NavBar -->
+    <div class="row myblue mynav" id="mynav" style="z-index: 999;">
+        <div class="col-sm-7 text-right" style="margin-top: 8px">
+            <!-- <button class="openbtn" onclick="openNav()">☰ Toggle Sidepanel</button> -->
+            <a href="{% url 'main:home' %}" class="mynav_item">HOME</a>
+            <a href="{% url 'main:aboutus' %}" class="mynav_item">ABOUT</a>
+            <div class="dropdown">
+                <a href="{% url 'main:media' %}" class="mynav_item dropbtn">MEDIA</a>
+                <div class="dropdown-content" style="z-index: 5;margin-top: 10px">
+                    <a href="{% url 'main:allvideos' %}" class="text-left">Videos</a>
+                    <a href="{% url 'main:allphotos' %}" class="text-left">Photos</a>
+                    <a href="{% url 'main:allnews' %}" class="text-left">News</a>
+                    <a href="#" class="text-left">Press Release</a>
+                </div>
+            </div>
+            <a href="{% url 'main:ourministers' %}" class="mynav_item">OUR MINISTERS</a>
+        </div>
+
+        <div class="col-sm-2 text-center logincol">
+            <a href="{% url 'main:join' %}" style="color: white;font-weight: bold">
+                <img src="{% static 'icons/join.svg' %}" alt="" style="width: 20px;margin-right: 20px"> BECOME A MEMBER
+            </a>
+        </div>
+
+        <div class="col-sm-2 text-center donatepar">
+            <a href="{% url 'main:donationform' %}">
+                <button class="donatebtn">DONATE</button>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid whole_content smallnav">
+    <div class="row" style="margin-top: 10px">
+        <div class="col-4">
+            <img src="{% static 'img/logo.png' %}" alt="" style="width:80px;margin-bottom: -32px">
+        </div>
+        <div class="col-8 text-right">
+            <a href="{{ social_links.0.fblink }}" target="_blank">
+                <img src="{% static 'img/fb.png' %}" alt="" class="smallsocialtop">
+            </a>
+            <a href="{{ social_links.0.instalink }}" target="_blank">
+                <img src="{% static 'img/insta.png' %}" alt="" class="smallsocialtop">
+            </a>
+            <a href="{{ social_links.0.twitterlink }}" target="_blank">
+                <img src="{% static 'img/twitter.png' %}" alt="" class="smallsocialtop">
+            </a>
+            <a href="{{ social_links.0.ytlink }}" target="_blank">
+                <img src="{% static 'img/yt.png' %}" alt="" class="smallsocialtop">
+            </a>
+            <a href="{{ social_links.0.linkedlink }}" target="_blank">
+                <img src="{% static 'img/linkedin.png' %}" alt="" class="smallsocialtop">
+            </a>
+        </div>
+    </div>
+
+    <div class="row myblue" id="mynavsmall" style="z-index: 999;">
+        <div class="col-6"></div>
+        <div class="col-3 myyellow text-center">
+            <a href="{% url 'main:donationform' %}">
+                <p style="font-weight: bold;margin: 0px;padding-top: 5px">DONATE</p>
+            </a>
+        </div>
+        <div class="col-2 text-right">
+            <button class="btn collapsebtn" style="font-size: 20px;padding: 0px;color: white" type="button"
+                data-toggle="collapse" data-target="#collapseExample" aria-expanded="false"
+                aria-controls="collapseExample">☰</button>
+        </div>
+    </div>
+
+    <div class="row collapse" id="collapseExample" style="background-color: #00000021;padding: 10px">
+        <div class="col-12 menu-sm">
+            <a href="{% url 'main:home' %}">HOME</a>
+        </div>
+        <div class="col-12 menu-sm">
+            <a href="{% url 'main:aboutus' %}">ABOUT</a>
+        </div>
+        <div class="col-12 menu-sm">
+            <a href="{% url 'main:media' %}">MEDIA</a>
+        </div>
+        <div class="col-12 menu-sm">
+            <a href="{% url 'main:ourministers' %}">OUR MINISTERS</a>
+        </div>
+        <div class="col-12 menu-sm">
+            <a href="{% url 'main:join' %}" style="font-weight: bold">
+                BECOME A MEMBER
+                <img src="{% static 'icons/join.svg' %}" alt="" style="width: 20px;margin-left: 20px">
+            </a>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    window.onscroll = function () { myFunction() };
+    var header = document.getElementById("mynav");
+    var headersm = document.getElementById("mynavsmall");
+    var sticky = header.offsetTop;
+    function myFunction() {
+        if (window.pageYOffset > sticky) {
+            header.classList.add("sticky");
+            headersm.classList.add("stickysm");
+        } else {
+            header.classList.remove("sticky");
+            headersm.classList.remove("stickysm");
+        }
+    }
+</script>
